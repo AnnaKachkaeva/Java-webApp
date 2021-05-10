@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title  th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body class="container py-3">
+
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container" >
+    <div class="section">
+        <div class="row">
+            <div class="col s12">
+                <div class="section">
+                    <div class="col s12"  th:each="el : ${ticket}">
+                        <h3>Editing flight</h3>
+
+                        <form method="post" class="col s12">
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <input id="icon_prefix" name="townA" type="text" class="validate" th:value="${el.townA}">
+                                    <label for="icon_prefix">departure town</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="icon_telephone" name="townB" type="text" class="validate" th:value="${el.townB}">
+                                    <label for="icon_telephone">arrival town</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <input id="cost" type="number" name="cost" class="validate" th:value="${el.cost}">
+                                    <label for="cost">cost</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <input placeholder="a link to a picture" id="image" type="text" name="image" class="validate" th:value="${el.image}">
+                                    <label for="image">image</label>
+                                </div>
+                            </div>
+
+                            <!--<div class="row">
+                                <div class="input-field col s8">
+                                    <input id="image" type="file" name="image" class="validate">
+                                    <label for="cost">cost</label>
+                                </div>
+                            </div>-->
+
+                            <button type="submit" class="waves-effect waves-light btn" >confirm changes</button>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:insert="blocks/footer :: footer"></footer>
+
+</body>
+</html>
